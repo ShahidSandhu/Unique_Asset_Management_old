@@ -38,3 +38,49 @@ class EmployeeListCreate(generics.ListCreateAPIView):
 class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+
+from rest_framework import viewsets
+from .models import AssetCategory, AssetVendor, AssetMake, AssetModel, AssetStatus, Department, Employee, Asset
+from .serializers import (
+    AssetCategorySerializer,
+    AssetVendorSerializer,
+    AssetMakeSerializer,
+    AssetModelSerializer,
+    AssetStatusSerializer,
+    DepartmentSerializer,
+    EmployeeSerializer,
+    AssetSerializer
+)
+
+class AssetCategoryViewSet(viewsets.ModelViewSet):
+    queryset = AssetCategory.objects.all()
+    serializer_class = AssetCategorySerializer
+
+class AssetVendorViewSet(viewsets.ModelViewSet):
+    queryset = AssetVendor.objects.all()
+    serializer_class = AssetVendorSerializer
+
+class AssetMakeViewSet(viewsets.ModelViewSet):
+    queryset = AssetMake.objects.all()
+    serializer_class = AssetMakeSerializer
+
+class AssetModelViewSet(viewsets.ModelViewSet):
+    queryset = AssetModel.objects.all()
+    serializer_class = AssetModelSerializer
+
+class AssetStatusViewSet(viewsets.ModelViewSet):
+    queryset = AssetStatus.objects.all()
+    serializer_class = AssetStatusSerializer
+
+class DepartmentViewSet(viewsets.ModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+class AssetViewSet(viewsets.ModelViewSet):
+    queryset = Asset.objects.all()
+    serializer_class = AssetSerializer

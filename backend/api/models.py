@@ -138,7 +138,7 @@ class Employee(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.given_name} {self.last_name}"
 
 class Asset(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

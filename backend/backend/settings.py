@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'api',  # api
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api',  # Your app
     'rest_framework_simplejwt',
 ]
 
@@ -83,6 +83,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+    # 'default': {
+        # 'ENGINE': 'django.db.backends.postgresql',  # or 'mysql'
+        # 'NAME': 'your_db_name',
+        # 'USER': 'your_db_user',
+        # 'PASSWORD': 'your_db_password',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',  # or '3306' for MySQL
+    # }
+# }
+# 
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

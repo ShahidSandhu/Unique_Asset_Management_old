@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Asset, AssetCategory, AssetVendor, AssetMake, AssetModel, AssetStatus, Employee
 from django.contrib.auth.models import User
+from .models import AssetCategory, AssetVendor, AssetMake, AssetModel, AssetStatus, Department, Employee, Asset
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -19,6 +20,41 @@ class UserSerializer(serializers.ModelSerializer):
         )
         return user
 
+
+class AssetCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AssetCategory
+        fields = '__all__'
+
+class AssetVendorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AssetVendor
+        fields = '__all__'
+
+class AssetMakeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AssetMake
+        fields = '__all__'
+
+class AssetModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AssetModel
+        fields = '__all__'
+
+class AssetStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AssetStatus
+        fields = '__all__'
+
+class DepartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Department
+        fields = '__all__'
+
+class EmployeeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        fields = '__all__'
 
 
 class AssetSerializer(serializers.ModelSerializer):
