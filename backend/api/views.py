@@ -84,3 +84,9 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 class AssetViewSet(viewsets.ModelViewSet):
     queryset = Asset.objects.all()
     serializer_class = AssetSerializer
+
+
+
+def index(request):
+    return render(request, 'index.html')
+
