@@ -51,31 +51,6 @@ class DepartmentSerializer(serializers.ModelSerializer):
         model = Department
         fields = '__all__'
 
-class EmployeeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Employee
-        fields = '__all__'
-
-
-class AssetSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Asset
-        fields = ['id', 'name', 'description', 'value', 'created_at', 'updated_at', 'update_count', 'employee']
-
-    # Custom validation for the value field
-    def validate_value(self, value):
-        if value < 0:
-            raise serializers.ValidationError("Asset value cannot be negative.")
-        return value
-
-
-class EmployeeSerializer(serializers.ModelSerializer):
-    assets = AssetSerializer(many=True, read_only=True)  # Display related assets for an employee
-    class Meta:
-        model = Employee
-        fields = ['id', 'given_name', 'last_name', 'email', 'position', 'hire_date', 'updated_at', 'assets']
-
-
 class AssetSerializer(serializers.ModelSerializer):
     category = serializers.StringRelatedField()
     vendor = serializers.StringRelatedField()
@@ -87,3 +62,10 @@ class AssetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Asset
         fields = ['id', 'serial_number', 'barcode', 'date_acquired', 'date_disposed', 'name', 'description', 'value', 'category', 'vendor', 'make', 'model', 'status', 'employee', 'created_at', 'updated_at', 'update_count']
+
+
+class EmployeeSerializer(serializers.ModelSerializer):
+    assets = AssetSerializer(many=True, read_only=True)  # Display related assets for an employee
+    class Meta:
+        model = Employee
+        fields = ['id', 'given_name', 'last_name', 'email', 'position', 'hire_date', 'updated_at', 'assets']

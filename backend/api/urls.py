@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import UserRegistrationView
 from .views import EmployeeListCreate, EmployeeDetail, AssetListCreate, AssetDetail
-
+from .views import index
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
@@ -38,4 +38,5 @@ urlpatterns = [
     path('employees/', EmployeeListCreate.as_view(), name='employee-list-create'),
     path('employees/<uuid:pk>/', EmployeeDetail.as_view(), name='employee-detail'),
     path('api/', include(router.urls)),
+    path('', index, name='index'),
 ]

@@ -11,9 +11,22 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+
+# Add static files directory (for serving React static files, for example)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/build/static'),  # Serving React build files
+]
 
 
 # Quick-start development settings - unsuitable for production
@@ -145,4 +158,12 @@ REST_FRAMEWORK = {
     ],
 }
 
+
 CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins for now, you can limit this later
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/build/static'),
+]
+
+# by pass CSRF token while in development
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
